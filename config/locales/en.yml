@@ -1,0 +1,10 @@
+en:
+  project_module_edit_custom_fields: Edit custom fields
+  permission_edit_custom_fields: Edit custom fields
+
+  select_field: Edit custom field
+
+  edit_custom_fields:
+    label_settings: Custom fields
+    none_found: No editable custom fields found
+    text_allowed: Only visible custom fields can be selected

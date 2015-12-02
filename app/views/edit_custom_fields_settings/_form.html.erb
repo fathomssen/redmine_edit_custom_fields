@@ -1,0 +1,40 @@
+<%
+# Edit Custom Fields plugin for Redmine
+# 
+# Copyright (c) 2015 Thomssen IT
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+-%>
+<div class="box" style="display: none;">
+  <h2><%= l 'select_field' %></h2>
+  <%= select_tag 'custom_field', getOptions() %><br>
+  <em><%=l 'edit_custom_fields.text_allowed' %></em>
+</div>
+<% getFields().each do |cf| %>
+  <% @custom_field = cf # for faulty incorporated method %>
+  <div class="box">
+    <h2><%= cf.name %></h2>
+    <%= labelled_form_for :custom_field, cf,
+                          :url => edit_custom_fields_settings_update_path(@project, cf),
+			  :html => {:method => :put, :id => 'edit_custom_field_form'} do |f| %>
+       <%= render_custom_field_format_partial f, cf %>
+       <%= submit_tag l(:button_save) %>
+    <% end %>
+  </div>
+<% end %>
