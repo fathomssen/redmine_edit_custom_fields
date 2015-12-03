@@ -22,10 +22,6 @@
 
 class EditCustomFieldsHook  < Redmine::Hook::ViewListener
 
-    def view_layouts_base_html_head(context = {})
-        stylesheet_link_tag('extended_fields', :plugin => 'extended_fields')
-    end
-
     render_on :view_custom_fields_form_issue_custom_field,    :partial => 'custom_fields/options'
 
 end
