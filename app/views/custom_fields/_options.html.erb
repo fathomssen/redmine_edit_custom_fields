@@ -1,3 +1,4 @@
+<%
 # Edit Custom Fields plugin for Redmine
 # 
 # Copyright (c) 2015 Frederick Thomssen
@@ -19,26 +20,5 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-module EditCustomFieldsHelper
-
-  # Return all fields that are user-editable
-  def getFields()
-    @project.all_issue_custom_fields.where user_editable: true
-  end
-
-  # Build an option list for a select box
-  def getOptions()
-    fields = getFields()
-
-    options = nil
-    if fields.respond_to?("collect")
-      options = fields.collect{ |o| [o.name] }
-    else
-      options = [l('edit_custom_fields.none_found')]
-    end
-
-    options_for_select( options )
-  end
-
-end
+-%>
+<p><%= form.check_box(:user_editable, :label => l(:user_editable)) %></p>

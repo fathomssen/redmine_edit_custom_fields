@@ -20,25 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-module EditCustomFieldsHelper
+require_dependency 'custom_field'
 
-  # Return all fields that are user-editable
-  def getFields()
-    @project.all_issue_custom_fields.where user_editable: true
-  end
+module EditCustomFields
+  module CustomFieldPatch
+    unloadable
 
-  # Build an option list for a select box
-  def getOptions()
-    fields = getFields()
+    extend ActiveSupport::Concern
 
-    options = nil
-    if fields.respond_to?("collect")
-      options = fields.collect{ |o| [o.name] }
-    else
-      options = [l('edit_custom_fields.none_found')]
+    def user_editable?
+      user_editable == true
     end
-
-    options_for_select( options )
   end
+end
 
+DefaultCustomQuery::ProjectPatch.tap do |mod|
+  Project.send :include, mod unless Project.include?(mod)
 end

@@ -20,25 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-module EditCustomFieldsHelper
+class AddUserEditableToCustomField < ActiveRecord::Migration
 
-  # Return all fields that are user-editable
-  def getFields()
-    @project.all_issue_custom_fields.where user_editable: true
+  def self.up
+    add_column :custom_fields, :user_editable, :boolean, :default => false, :null => false
   end
 
-  # Build an option list for a select box
-  def getOptions()
-    fields = getFields()
-
-    options = nil
-    if fields.respond_to?("collect")
-      options = fields.collect{ |o| [o.name] }
-    else
-      options = [l('edit_custom_fields.none_found')]
-    end
-
-    options_for_select( options )
+  def self.down
+    remove_column :custom_fields, :user_editable
   end
 
 end

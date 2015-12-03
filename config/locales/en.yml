@@ -3,6 +3,7 @@ en:
   permission_edit_custom_fields: Edit custom fields
 
   select_field: Edit custom field
+  user_editable: User editable
 
   edit_custom_fields:
     label_settings: Custom fields

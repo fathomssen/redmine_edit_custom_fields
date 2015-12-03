@@ -20,25 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-module EditCustomFieldsHelper
+class EditCustomFieldsHook  < Redmine::Hook::ViewListener
 
-  # Return all fields that are user-editable
-  def getFields()
-    @project.all_issue_custom_fields.where user_editable: true
-  end
-
-  # Build an option list for a select box
-  def getOptions()
-    fields = getFields()
-
-    options = nil
-    if fields.respond_to?("collect")
-      options = fields.collect{ |o| [o.name] }
-    else
-      options = [l('edit_custom_fields.none_found')]
+    def view_layouts_base_html_head(context = {})
+        stylesheet_link_tag('extended_fields', :plugin => 'extended_fields')
     end
 
-    options_for_select( options )
-  end
+    render_on :view_custom_fields_form_issue_custom_field,    :partial => 'custom_fields/options'
 
 end

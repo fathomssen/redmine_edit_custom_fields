@@ -13,7 +13,8 @@ attached to issues within the current project.
 
 ## Features
 
-* Allows editing of all issue custom fields for a project.
+* Allows editing of certain issue custom fields for a project.
+* Allows to choose which custom fields are user-editable.
 * Provides a new permission for user roles.
 * Provides a new module permission for projects.
 
@@ -40,5 +41,4 @@ After installing the plugin, you have to perform some configuration to enable th
 
 ## Todo
 
-* Add a field in the custom fields configuration to make only certain custom fields user-editable.
 * Add a select box to choose which custom field to edit.
