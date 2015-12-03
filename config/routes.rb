@@ -1,6 +1,6 @@
 # Edit Custom Fields plugin for Redmine
 # 
-# Copyright (c) 2015 Thomssen IT
+# Copyright (c) 2015 Frederick Thomssen
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal

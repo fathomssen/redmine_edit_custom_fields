@@ -1,6 +1,6 @@
 # Edit Custom Fields plugin for Redmine
 # 
-# Copyright (c) 2015 Thomssen IT
+# Copyright (c) 2015 Frederick Thomssen
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,12 @@
 
 Redmine::Plugin.register :redmine_edit_custom_fields do
   name 'Redmine Edit Custom Fields'
-  author 'Thomssen IT'
+  author 'Frederick Thomssen'
   description 'Redmine plugin to allow users editing custom fields for their project'
   version '0.0.1'
   requires_redmine '2.6'
-  url 'https://github.com/thomssen-it/redmine_edit_custom_fields'
-  author_url 'https://www.thomssen-it.de'
+  url 'https://github.com/fathomssen/redmine_edit_custom_fields'
+  author_url 'http://www.frederick-thomssen.de'
 
   project_module :edit_custom_fields do
     permission :edit_custom_fields, { edit_custom_fields_settings: [ :update ] }, require: :member
