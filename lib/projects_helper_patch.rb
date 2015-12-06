@@ -34,8 +34,8 @@ module EditCustomFields
     def project_settings_tabs_with_edit_custom_fields_settings_tab
       tabs = project_settings_tabs_without_edit_custom_fields_settings_tab
 
-      if User.current.allowed_to?(:edit_custom_fields, @project)
-	 && @project.module_enabled?(:edit_custom_fields)
+      if User.current.allowed_to?(:edit_custom_fields, @project) &&
+	 @project.module_enabled?(:edit_custom_fields)
         tabs << {
           name: 'edit_custom_fields',
           action: :edit_custom_fields,
