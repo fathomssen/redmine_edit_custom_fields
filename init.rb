@@ -24,7 +24,7 @@ Redmine::Plugin.register :redmine_edit_custom_fields do
   name 'Redmine Edit Custom Fields'
   author 'Frederick Thomssen'
   description 'Redmine plugin to allow users editing custom fields for their project'
-  version '0.0.2'
+  version '0.0.2-dev'
   requires_redmine '2.6'
   url 'https://github.com/fathomssen/redmine_edit_custom_fields'
   author_url 'http://www.frederick-thomssen.de'
@@ -34,4 +34,15 @@ Redmine::Plugin.register :redmine_edit_custom_fields do
   end
 end
 
-require_relative 'lib/edit_custom_fields'
+Rails.configuration.to_prepare do
+  # Load patches for Redmine
+  Dir.glob( File.join(__dir__, 'app', 'patches', '**', '*_patch.rb') ) {|f| require_dependency f }
+
+  # Load application helper
+  ::EditCustomFieldsHelper.tap do |mod|
+    ActionView::Base.send :include, mod unless ActionView::Base.include?(mod)
+  end
+end
+
+# Load hooks
+Dir.glob( File.join(__dir__, 'app', 'hooks', '*_hook.rb') ) {|f| require_dependency f }

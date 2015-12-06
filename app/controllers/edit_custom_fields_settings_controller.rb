@@ -28,15 +28,12 @@ class EditCustomFieldsSettingsController < ApplicationController
   before_filter :find_custom_field
 
   def update
-    if @custom_field.update_attributes(params[:custom_field])
-      flash[:notice] = l(:notice_successful_update)
-      #call_hook(:controller_custom_fields_edit_after_save, :params => params, :custom_field => @custom_field)
-      #redirect_to custom_fields_path(:tab => @custom_field.class.name)
-      redirect_to :controller => 'projects', :action => "settings", :id => @project, :tab => 'edit_custom_fields'
+    if @custom_field.update_attributes params[:custom_field]
+      flash[:notice] = l :notice_successful_update
+      redirect_to :controller => 'projects', :action => 'settings', :id => @project, :tab => 'edit_custom_fields'
     else
       render :action => 'edit'
     end
-    #redirect_to :controller => 'projects', :action => "settings", :id => @project, :tab => 'edit_custom_fields'
   end
 
   def find_custom_field
