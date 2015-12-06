@@ -24,7 +24,7 @@ Redmine::Plugin.register :redmine_edit_custom_fields do
   name 'Redmine Edit Custom Fields plugin'
   author 'Frederick Thomssen'
   description 'Redmine plugin to allow users editing custom fields for their project'
-  version '0.0.2-dev'
+  version '0.0.2'
   requires_redmine '3.1'
   url 'https://github.com/fathomssen/redmine_edit_custom_fields'
   author_url 'http://www.frederick-thomssen.de'
