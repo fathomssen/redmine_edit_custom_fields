@@ -36,7 +36,8 @@ end
 
 Rails.configuration.to_prepare do
   # Load patches for Redmine
-  Dir.glob( File.join(__dir__, 'app', 'patches', '**', '*_patch.rb') ) {|f| require_dependency f }
+  require_dependency File.join( __dir__, 'lib', 'custom_field_patch' )
+  require_dependency File.join( __dir__, 'lib', 'projects_helper_patch' )
 
   # Load application helper
   ::EditCustomFieldsHelper.tap do |mod|
@@ -45,4 +46,4 @@ Rails.configuration.to_prepare do
 end
 
 # Load hooks
-Dir.glob( File.join(__dir__, 'app', 'hooks', '*_hook.rb') ) {|f| require_dependency f }
+require_dependency File.join( __dir__, 'lib', 'edit_custom_fields_hook' )

@@ -20,8 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-class EditCustomFieldsHook  < Redmine::Hook::ViewListener
+class EditCustomFieldsHook < Redmine::Hook::ViewListener
 
-    render_on :view_custom_fields_form_issue_custom_field,    :partial => 'custom_fields/options'
+  render_on :view_custom_fields_form_issue_custom_field, :partial => 'custom_fields/options'
 
 end
