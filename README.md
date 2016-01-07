@@ -20,10 +20,11 @@ attached to issues within the current project.
 
 ## Installation
 
-The installation does not require a database migration. Just clone the Git repository to your `plugins` folder and restart the Redmine application.
+For installation, clone the Git repository to your `plugins` folder, restart the Redmine application and perform the migration.
 
     cd redmine/plugins
     git clone https://github.com/fathomssen/redmine_edit_custom_fields.git
+    rake redmine:plugins:migrate NAME=redmine_edit_custom_fields RAILS_ENV=production
 
 ## Configuration
 
