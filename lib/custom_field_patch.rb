@@ -33,7 +33,3 @@ module EditCustomFields
     end
   end
 end
-
-DefaultCustomQuery::ProjectPatch.tap do |mod|
-  Project.send :include, mod unless Project.include?(mod)
-end
