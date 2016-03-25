@@ -34,8 +34,13 @@ After installing the plugin, you have to perform some configuration to enable th
     1. Either choose an existing role or create a new one.
     2. In the Permissions area, check "Edit custom fields".
     3. Click on the Save button.
-    4. Now, this user role is allowed to edit custom fields.
-2. In the Settings tab of a project, open the Modules tab.
+    4. Now, this user role is allowed to edit custom fields.	
+2. Still in the Administration area, open the "Custom fields" tab
+    1. Open the custom field that you want to make user-editable
+    2. Check "User editable"
+    3. Click on the Save button
+    4. Repeat for each custom field that should be user-editable
+3. In the Settings tab of a project, open the Modules tab.
     1. Check "Edit custom fields".
     2. Click on the Save button.
     3. Now, a new tab "Custom fields" will have appeared.
