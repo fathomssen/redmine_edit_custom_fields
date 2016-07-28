@@ -45,6 +45,12 @@ After installing the plugin, you have to perform some configuration to enable th
     2. Click on the Save button.
     3. Now, a new tab "Custom fields" will have appeared.
 
+## Screenshots
+
+![Screenshot of project settings](images/project-settings.png?raw=true "Editing custom fields in the project settings")
+
+![Screenshot of administration](images/administration-custom-fields.png?raw=true "Make custom fields editable")
+    
 ## Todo
 
 * Add a select box to choose which custom field to edit.
