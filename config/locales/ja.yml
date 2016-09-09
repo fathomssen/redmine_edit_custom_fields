@@ -1,0 +1,11 @@
+ja:
+  project_module_edit_custom_fields: カスタムフィールドの編集
+  permission_edit_custom_fields: カスタムフィールドの編集
+
+  select_field: カスタムフィールドの編集
+  user_editable: ユーザーが編集可能
+
+  edit_custom_fields:
+    label_settings: カスタムフィールド
+    none_found: 編集できるカスタムフィールドがありません
+    text_allowed: 編集できるカスタムフィールド
