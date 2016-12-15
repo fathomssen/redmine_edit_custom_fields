@@ -26,6 +26,8 @@ For installation, clone the Git repository to your `plugins` folder, restart the
     git clone https://github.com/fathomssen/redmine_edit_custom_fields.git
     rake redmine:plugins:migrate NAME=redmine_edit_custom_fields RAILS_ENV=production
 
+Please make sure that `redmine_edit_custom_fields` is installed directly under `redmine/plugins` and not, for example, under `redmine/lib/plugins` or under a different name, e. g. `redmine/plugins/edit_cf`. Otherwise, the plugin will most probably throw errors during migration.
+
 ## Configuration
 
 After installing the plugin, you have to perform some configuration to enable this plugin for users and projects.
