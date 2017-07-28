@@ -25,6 +25,7 @@ require_dependency 'custom_field'
 module EditCustomFields
   module CustomFieldPatch
     unloadable
+    CustomField.safe_attributes 'user_editable'
 
     extend ActiveSupport::Concern
 
