@@ -1,0 +1,11 @@
+hu:
+  project_module_edit_custom_fields: Egyéni mezők szerkesztése
+  permission_edit_custom_fields: Egyéni mezők szerkesztése
+
+  select_field: Egyéni mezők szerkesztése
+  user_editable: Felhasználók szerkeszthetik
+
+  edit_custom_fields:
+    label_settings: Egyéni mezők
+    none_found: Nem található egyéni mező
+    text_allowed: Csak a látható egyéni mezőkből lehet választani
