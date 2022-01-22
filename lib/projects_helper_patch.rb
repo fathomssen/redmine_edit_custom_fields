@@ -26,16 +26,11 @@ module EditCustomFields
   module ProjectsHelperPatch
     extend ActiveSupport::Concern
 
-    included do
-      unloadable
-      alias_method_chain :project_settings_tabs, :edit_custom_fields_settings_tab
-    end
-
-    def project_settings_tabs_with_edit_custom_fields_settings_tab
-      tabs = project_settings_tabs_without_edit_custom_fields_settings_tab
+    def project_settings_tabs
+      tabs = super
 
       if User.current.allowed_to?(:edit_custom_fields, @project) &&
-	 @project.module_enabled?(:edit_custom_fields)
+   @project.module_enabled?(:edit_custom_fields)
         tabs << {
           name: 'edit_custom_fields',
           action: :edit_custom_fields,
@@ -47,6 +42,8 @@ module EditCustomFields
     end
   end
 end
+
+ProjectsHelper.prepend(EditCustomFields::ProjectsHelperPatch)
 
 EditCustomFields::ProjectsHelperPatch.tap do |mod|
   ProjectsHelper.send :include, mod unless ProjectsHelper.include?(mod)

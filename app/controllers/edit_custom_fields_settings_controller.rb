@@ -23,16 +23,29 @@
 class EditCustomFieldsSettingsController < ApplicationController
   unloadable
 
-  before_filter :find_project_by_project_id
-  before_filter :authorize
-  before_filter :find_custom_field
+  before_action :find_project_by_project_id
+  before_action :authorize
+  before_action :find_custom_field
+
+  helper :custom_fields
 
   def update
-    if @custom_field.update_attributes params[:custom_field]
-      flash[:notice] = l :notice_successful_update
-      redirect_to :controller => 'projects', :action => 'settings', :id => @project, :tab => 'edit_custom_fields'
+    @custom_field.safe_attributes = params[:custom_field]
+    if @custom_field.save
+      call_hook(:controller_custom_fields_edit_after_save, :params => params, :custom_field => @custom_field)
+      respond_to do |format|
+        format.html {
+          flash[:notice] = l(:notice_successful_update)
+          # redirect_back_or_default edit_custom_field_path(@custom_field)
+          redirect_to :controller => 'projects', :action => 'settings', :id => @project, :tab => 'edit_custom_fields'
+        }
+        format.js { head 200 }
+      end
     else
-      render :action => 'edit'
+      respond_to do |format|
+        format.html { render :action => 'edit' }
+        format.js { head 422 }
+      end
     end
   end
 
